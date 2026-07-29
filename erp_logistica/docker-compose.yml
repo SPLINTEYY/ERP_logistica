@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Banco Relacional (PostgreSQL)
+  postgres_db:
+    image: postgres:15
+    container_name: erp_postgres
+    environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: adminpassword
+        POSTGRES_DB: erp_logistica
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  #Banco NoSQL (MongoDB)
+      
+  mongo_db:
+    image: mongo:6
+    container_name: erp_mongodb
+    ports:
+      - "27017:27017" 
+    volumes:
+      - mongodata:/data/db 
+
+volumes:
+  pgdata:
+  mongodata:
